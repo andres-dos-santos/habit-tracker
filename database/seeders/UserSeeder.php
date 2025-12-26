@@ -6,12 +6,14 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     public function run(): void
     {
-        $this->call([UserSeeder::class]);
+        User::query()->create([
+            'name' => 'Fulano de Tal',
+            'email' => 'fulano@gmail.com',
+            'password' => '123456'
+        ]);
     }
 }
