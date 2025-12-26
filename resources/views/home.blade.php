@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html>
-  <body style="background-color:black;color:white;">
-    <h1>Home</h1>
-    <p>Olá, {{ $name }}</p>
-    
-    <strong>Your habits:</strong>
-    
-    <ul>
-      @foreach ($habits as $item)
-        <li>{{ $item }}</li>
-      @endforeach
-    </ul>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ config('app.name') }}</title>
+
+  @vite('resources/css/app.css')
+</head>
+<body>
+  <h1 class="text-2xl text-red-500">Hello World</h1>
+</body>
 </html>
