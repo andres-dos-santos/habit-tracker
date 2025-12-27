@@ -5,7 +5,7 @@
 
       <p class="mb-5">Insira seus dados para acessar</p>
 
-      <form action="/login" method="post" class="flex flex-col gap-4">
+      <form action="{{ route('auth.login') }}" method="post" class="flex flex-col gap-4">
         @csrf
 
         <fieldset class="flex flex-col">
@@ -44,7 +44,12 @@
           Login
         </button>
         
-        <a class="mt-5" href="">Ainda não tem conta? <span class="underline">Registre-se</span></a>
+        <a 
+          class="mt-2" 
+          href="{{ route('site.register') }}"
+        >
+          Ainda não tem conta? <span class="underline hover:opacity-50">Registre-se</span>
+        </a>
       </form>
     </section>
   </main>
