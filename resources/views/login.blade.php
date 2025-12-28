@@ -38,7 +38,6 @@
             </p>
           @enderror
         </fieldset>
-
         
         <button type="submit" class="bg-white border-2 p-2 font-bold mt-5">
           Login
