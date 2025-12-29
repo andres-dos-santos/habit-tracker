@@ -33,12 +33,22 @@ class HabitController extends Controller
 
     public function edit(Habit $habit)
     {
-        //
+        return view('habits.edit', compact('habit'));
     }
     
-    public function update(Request $request, Habit $habit)
+    public function update(HabitRequest $request, Habit $habit)
     {
-        //
+        if($habit->user_id !== auth()->user()->id) {
+            abort(403, 'Esse hábito não é seu!');
+        }
+
+        $validated = $request->validated();
+
+        $habit->update($validated);
+
+        return redirect()
+            ->route('site.dashboard')
+            ->with('success', 'Hábito atualizado com sucesso!');
     }
 
     public function destroy(Habit $habit)

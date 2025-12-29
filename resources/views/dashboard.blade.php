@@ -27,6 +27,9 @@
               <span class="font-light text-md">
                 [{{ $item->habitLogs->count() }}]
               </span>
+              <a href="{{ route('habit.edit', $item->id) }}" class="hover:opacity-50 p-1 bg-blue-500 cursor-pointer">
+                <x-icons.edit />
+              </a>
               
               <form action={{ route('habit.destroy', $item) }} method="post">
                 @csrf
