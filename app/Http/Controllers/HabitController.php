@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HabitRequest;
 use App\Models\Habit;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+
 
 class HabitController extends Controller
 {
@@ -15,6 +15,12 @@ class HabitController extends Controller
         return view('habits.create');
     }
 
+    public function index() {
+        $habits = $user->habits;
+
+        return view('dashboard', compact('habits'));
+    }
+
     public function store(HabitRequest $request)
     {   
         $validated = $request->validated();
@@ -22,7 +28,7 @@ class HabitController extends Controller
         auth()->user()->habits()->create($validated);
 
         return redirect()
-            ->route('site.dashboard')
+            ->route('habits.index')
             ->with('success',  'Hábito criado com sucesso.');
     }
 
@@ -47,7 +53,7 @@ class HabitController extends Controller
         $habit->update($validated);
 
         return redirect()
-            ->route('site.dashboard')
+            ->route('habits.index')
             ->with('success', 'Hábito atualizado com sucesso!');
     }
 
@@ -60,7 +66,7 @@ class HabitController extends Controller
         $habit->delete();
 
         return redirect()
-            ->route('site.dashboard')
+            ->route('habits.index')
             ->with('success', 'Hábito removido com sucesso.');
     }
 }

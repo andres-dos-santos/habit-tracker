@@ -2,7 +2,7 @@
   <main class="py-10">
     <h1 class="font-bold text-4xl text-center">Dashboard</h1>
 
-    <a href={{ route('habit.create') }} class="p-2 border-2 bg-white font-bold">
+    <a href={{ route('habits.create') }} class="p-2 border-2 bg-white font-bold">
       Cadastrar Hábito
     </a>
     
@@ -27,11 +27,11 @@
               <span class="font-light text-md">
                 [{{ $item->habitLogs->count() }}]
               </span>
-              <a href="{{ route('habit.edit', $item->id) }}" class="hover:opacity-50 p-1 bg-blue-500 cursor-pointer">
+              <a href="{{ route('habits.edit', $item->id) }}" class="hover:opacity-50 p-1 bg-blue-500 cursor-pointer">
                 <x-icons.edit />
               </a>
               
-              <form action={{ route('habit.destroy', $item) }} method="post">
+              <form action={{ route('habits.destroy', $item) }} method="post">
                 @csrf
                 @method('delete')
 

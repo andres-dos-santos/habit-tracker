@@ -3,7 +3,7 @@
     <p>Cadastrar novo hábito</p>
 
     <section class="bg-white max-w-[600px] mx-auto p-10 pb-6 border-2 mt-4">
-      <form action={{ route('habit.store') }} method="post" class="flex flex-col">
+      <form action={{ route('habits.store') }} method="post" class="flex flex-col">
         @csrf
 
         <fieldset class="flex flex-col">
