@@ -1,17 +1,21 @@
 <x-layout>
   <main class="py-10 flex flex-1 items-center justify-center flex-col">
-    <section class="bg-white p-5 border-2 mt-10 min-w-sm">
+    <section class="bg-white p-5 habit-shadow-lg mt-10 min-w-sm">
       <h1 class="text-xl font-bold mb-5">Logue</h1>
 
       <p class="mb-5">Insira seus dados para acessar</p>
 
-      <form action="{{ route('auth.login') }}" method="post" class="flex flex-col gap-4">
+      <form 
+        action="{{ route('auth.login') }}" 
+        method="post" 
+        class="flex flex-col gap-4"
+      >
         @csrf
 
         <fieldset class="flex flex-col">
           <label for="" class="font-medium text-sm mb-1.5">Email</label>
           <input
-            class="bg-white border-2 p-2 @error ('email') border-red-500 @enderror" 
+            class="outline-0 bg-white habit-shadow p-2 @error ('email') border-red-500 @enderror" 
             placeholder="Email" 
             name="email"
             type="email"
@@ -26,8 +30,8 @@
 
         <fieldset class="flex flex-col">
           <label for="" class="font-medium text-sm mb-1.5">Senha</label>
-          <input 
-            class="bg-white border-2 p-2 @error ('email') border-red-500 @enderror"
+          <input
+            class="outline-0 bg-white habit-shadow p-2 @error ('email') border-red-500 @enderror"
             placeholder="******"
             name="password" 
             type="password"
@@ -39,8 +43,8 @@
           @enderror
         </fieldset>
         
-        <button type="submit" class="bg-white border-2 p-2 font-bold mt-5">
-          Login
+        <button type="submit" class="p-2 font-bold mt-5 habit-shadow-lg bg-habit-orange habit-btn">
+          Entrar
         </button>
         
         <a 
