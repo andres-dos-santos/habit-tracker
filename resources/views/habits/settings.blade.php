@@ -11,7 +11,7 @@
     @endsession
 
     <div>
-      <h2 class="text-xl font-bold mt-8 mb-4">{{ date('d/m/Y') }}</h2>
+      <h2 class="text-xl mt-8 mb-4 font-bold">Configurar Hábitos</h2>
 
       <ul class="flex flex-col gap-2">
         @forelse($habits as $item)
@@ -21,9 +21,27 @@
               <p class="font-bold text-lg">
                 {{ $item->name }}
               </p>
-            </div>
-          </li>
-        @empty
+                <span class="font-light text-md">
+                  [{{ $item->habitLogs->count() }}]
+                </span>
+                <a href="{{ route('habits.edit', $item->id) }}" class="hover:opacity-50 p-1 bg-blue-500 cursor-pointer">
+                  <x-icons.edit />
+                </a> 
+                
+                <form action={{ route('habits.destroy', $item) }} method="post">
+                  @csrf
+                  @method('delete')
+
+                  <button 
+                    type="submit" 
+                    class="hover:opacity-50 p-1 bg-red-500 cursor-pointer"
+                  >
+                    <x-icons.trash />
+                  </button>
+                </form>
+              </div>
+            </li>
+          @empty
           <p>Nenhum hábito registrado.</p>
           <a href="/habito/cadastrar" class="bg-white p-2 border-2 flex">
             Cadastre um novo hábito agora.
