@@ -15,13 +15,30 @@
 
       <ul class="flex flex-col gap-2">
         @forelse($habits as $item)
+          @php
+            $wasCompletedToday = $item->habitLogs
+              ->where('user_id', auth()->id())
+              ->where('completed_at', \Carbon\Carbon::today()->toDateString())
+              ->isNotEmpty();
+          @endphp
           <li class="habit-shadow-lg p-2 bg-[#ffdaac]">
-            <div class="flex items-center gap-2">
-              <input type="checkbox" class="w-5 h-5" {{ $item->is_completed ? 'checked' : '' }} disabled />
+            <form 
+              action="{{ route('habits.toggle', $item->id) }}"
+              method="post" 
+              class="flex items-center gap-2"
+              id="form-{{ $item->id }}"
+            >
+              @csrf
+              <input 
+                {{ $wasCompletedToday ? 'checked' : '' }} 
+                type="checkbox" 
+                class="w-5 h-5"
+                onchange="document.getElementById('form-{{ $item->id }}').submit()"
+              />
               <p class="font-bold text-lg">
                 {{ $item->name }}
               </p>
-            </div>
+            </form>
           </li>
         @empty
           <p>Nenhum hábito registrado.</p>
