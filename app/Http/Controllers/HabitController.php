@@ -13,15 +13,17 @@ use Illuminate\View\View;
 class HabitController extends Controller
 {
 
-    public function create(): View
-    {
-        return view('habits.create');
-    }
-
     public function index() {
-        $habits = Auth::user()->habits;
+        $habits = Auth::user()
+            ->habits()
+            ->with('habitLogs')
+            ->get();
 
         return view('dashboard', compact('habits'));
+    }
+
+    public function create(): View {
+        return view('habits.create');
     }
 
     public function store(HabitRequest $request)
