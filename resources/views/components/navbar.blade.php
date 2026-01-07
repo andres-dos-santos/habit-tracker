@@ -7,7 +7,7 @@
     </li>
 
     <li>
-      <a href="#" class="font-bold text-md border-r-2 border-habit-orange pr-2 hover:underline">
+      <a href={{ route('habits.history') }} class="font-bold text-md border-r-2 border-habit-orange pr-2 hover:underline">
         Histórico
       </a>
     </li>
